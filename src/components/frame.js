@@ -9,10 +9,12 @@ const FrameContainer = styled.div `
 `
 
 const FrameImage = styled.img `
-    width: 100%;
+    width: auto;
+    margin: 0 auto;
+    display: block;
     height: 100%;
     object-fit: contain;
-    border-radius: 10%;
+    border-radius: 5px;
 `
 
 function frame(props) {

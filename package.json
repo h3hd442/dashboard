@@ -7,10 +7,12 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.20.0",
+    "moment": "^2.29.1",
     "random-gradient": "0.0.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
+    "react-open-weather": "https://github.com/mhonkanen/react-open-weather",
     "react-scripts": "3.4.3",
     "rss-parser": "^3.9.0",
     "styled-components": "^5.2.0"

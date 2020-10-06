@@ -14,21 +14,21 @@ function Clock() {
 
       return (
         <div className="clock-container">
-            <div className="clock-col">
+            <span className="clock-col">
             <p className="clock-hours clock-timer">
             {date.getHours()}
             </p>
-            </div>
-            <div className="clock-col">
+            </span>
+            <span className="clock-col">
             <p className="clock-minutes clock-timer">
             {date.getMinutes()}
             </p>
-            </div>
-            <div className="clock-col">
+            </span>
+            <span className="clock-col">
             <p className="clock-seconds clock-timer">
             {date.getSeconds()}
             </p>
-            </div>
+            </span>
         </div>
 
       );

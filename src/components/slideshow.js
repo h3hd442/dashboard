@@ -17,7 +17,7 @@ function Slideshow(props) {
                   return count + 1;
                 }
               });
-    }, 1000);
+    }, 155000);
       }, []);
       
     const SlideshowContainer = styled.div`
@@ -25,23 +25,25 @@ function Slideshow(props) {
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        background: #89d28e;
-        box-shadow: 9.91px 9.91px 15px #7DBF81, -9.91px -9.91px 15px #95E59B;
+        background: #4a4a4a;
+        box-shadow: 9.91px 9.91px 15px #434343, -9.91px -9.91px 15px #515151;
         padding: 20px;
         padding-bottom: 30px;
+        border-radius: 10px;
     `
 
     const SlideshowTitle = styled.h2`
-        font-size: 30px;
-        color: white;
-        box-shadow: inset 9.91px 9.91px 15px #7DBF81, inset -9.91px -9.91px 15px #95E59B;
+        font-size: 16px;
+        color: #bfbfbf;
+        box-shadow: inset 9.91px 9.91px 15px #434343, inset -9.91px -9.91px 15px #515151;
         padding: 30px;
         border-radius: 51px;
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
     `
 
     return (
             <SlideshowContainer>
-                <div>{count}</div>
             <SlideshowTitle>{props.array.items[count].title}</SlideshowTitle>
             <Frame bgimg={ props.array.items[count].thumbnail } alt="news thumbnail"/>
             </SlideshowContainer>
