@@ -37,7 +37,7 @@ body {
 .clock-container {
   margin-top: 30px;
   margin-bottom: 30px;
-  background-color: #080808;
+  background: #89d28e;
   border-radius: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -46,8 +46,13 @@ body {
   margin: 0 auto;
   margin-top: 30px;
   margin-bottom: 30px;
-  -webkit-box-shadow: 0px 0px 84px -17px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 84px -17px rgba(0, 0, 0, 0.75);
+  border-radius: 51px;
+  -webkit-box-shadow: 9.91px 9.91px 15px #7DBF81, -9.91px -9.91px 15px #95E59B;
+          box-shadow: 9.91px 9.91px 15px #7DBF81, -9.91px -9.91px 15px #95E59B;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 450px;
 }
 
 .clock-col {

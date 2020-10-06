@@ -16,14 +16,9 @@ height: 100vh;
 margin: 0;
 padding: 0;
 `
-
-const rssTable = '';
-
-const elo = 'yellow';
-
 const GlobalStyle = createGlobalStyle`
   body {
-    background: ${elo};
+    background: #89d28e;
   }
 `
 
@@ -34,21 +29,24 @@ class App extends React.Component {
     }
     
     async componentDidMount() {
-        const bgImg = await getWallpaper('cars');
-        this.setState({ bgImg });
+        // const bgImg = await getWallpaper('cars');
+        // this.setState({ bgImg });
         this.setState({ bgImgLoaded: 'true' })
         this.setState({ rssTable: await getRss() })
     }
 
     render() {
-        return (
-            <AppBody className="bodyapp">
-                <GlobalStyle />
-                <Slideshow array={this.state.rssTable} />
-                <div><Clock /></div>
-                <div><Loading  bgImg={this.state.bgImg} bgImgLoaded={this.state.bgImgLoaded} /></div>
-            </AppBody>
-        );
+        if (!this.state.rssTable) {
+            return <div>LOADING!!!</div>
+        } else {
+            return (
+                <AppBody className="bodyapp">
+                    <GlobalStyle />
+                    <Clock />
+                    <Slideshow array={this.state.rssTable} bgImg={this.state.bgImg} />
+                </AppBody>
+            );
+        }
     }
 }
 
