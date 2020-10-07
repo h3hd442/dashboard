@@ -8,9 +8,8 @@ import { createGlobalStyle } from 'styled-components';
 import Slideshow from './slideshow';
 import gradient from './gradient';
 import {getRss} from './rssparser';
-import ReactWeather from 'react-open-weather';
-import 'react-open-weather/lib/css/ReactWeather.css'
-
+import {getWeather} from './weatherApi';
+import Weather from './weather';
 const AppBody = styled.div`
 background-repeat: no-repeat;
 background-size: cover;
@@ -32,30 +31,24 @@ const FlexContainer = styled.div`
 class App extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { bgImg: '', bgImgLoaded: 'false', imageStatus: '', rssTable: ''}
+        this.state = { bgImg: '', bgImgLoaded: 'false', imageStatus: '', rssTable: '', weather: ''}
     }
     
     async componentDidMount() {
         this.setState({ bgImgLoaded: 'true' })
         this.setState({ rssTable: await getRss() })
+        this.setState({ weather: await getWeather() })
     }
 
     render() {
-        if (!this.state.rssTable) {
+        if (!this.state.rssTable, !this.state.weather) {
             return <div>LOADING!!!</div>
         } else {
             return (
                 <AppBody className="bodyapp">
                     <GlobalStyle />
-                    <FlexContainer>
                     <Clock />
-                    <ReactWeather
-                    forecast="today"
-                    apikey="2b66e599cd966e6ef3f87187ad4fa994"
-                    type="geo"
-                    lat="48.1351"
-                    lon="11.5820"
-                    /></FlexContainer>
+                    <Weather weatherTable={this.state.weather}/>
                     <Slideshow array={this.state.rssTable} bgImg={this.state.bgImg} />
                 </AppBody>
             );
