@@ -10,12 +10,19 @@ import gradient from './gradient';
 import {getRss} from './rssparser';
 import {getWeather} from './weatherApi';
 import Weather from './weather';
+import Todo from './Todo';
+
 const AppBody = styled.div`
 background-repeat: no-repeat;
 background-size: cover;
 height: 100vh;
 margin: 0;
 padding: 0;
+@media (max-width: 1600px) {
+    width: 70%;
+    display: block;
+    margin: 0 auto;
+}
 `
 const GlobalStyle = createGlobalStyle`
   body {
@@ -47,8 +54,10 @@ class App extends React.Component {
             return (
                 <AppBody className="bodyapp">
                     <GlobalStyle />
-                    <Clock />
-                    <Weather weatherTable={this.state.weather}/>
+                    <Todo />
+                     <FlexContainer>
+                        <Weather weatherTable={this.state.weather}/>
+                     </FlexContainer>
                     <Slideshow array={this.state.rssTable} bgImg={this.state.bgImg} />
                 </AppBody>
             );

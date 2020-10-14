@@ -29,15 +29,18 @@ function Slideshow(props) {
         box-shadow: 9.91px 9.91px 15px #434343, -9.91px -9.91px 15px #515151;
         padding: 20px;
         padding-bottom: 30px;
-        border-radius: 10px;
+        border-radius: 25px;
+        @media (max-width: 1600px) {
+          height: 60%;
+        }
     `
 
     const SlideshowTitle = styled.h2`
-        font-size: 16px;
+        font-size: 15px;
         color: #bfbfbf;
         box-shadow: inset 9.91px 9.91px 15px #434343, inset -9.91px -9.91px 15px #515151;
         padding: 30px;
-        border-radius: 51px;
+        border-radius: 25px;
         font-family: 'Lato', sans-serif;
         font-weight: 300;
     `
