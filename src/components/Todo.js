@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import db from './firebase';
 import firebase from "firebase";
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faTimes, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
@@ -36,6 +36,7 @@ const TodoForm = styled.div `
     form {
         display: flex;
         justify-content: space-between;
+        display: none;
         input {
             border-radius: 25px;
             box-shadow: inset 9.91px 9.91px 15px #434343, inset -9.91px -9.91px 15px #515151;
@@ -70,6 +71,7 @@ const TodoForm = styled.div `
     ul {
         list-style-type: none;
         padding-left: 0px;
+        display: none;
         div {
             display: flex;
             align-items: center;
@@ -86,11 +88,32 @@ const TodoForm = styled.div `
             
         }
     }
+    ${({ isClicked }) =>
+    isClicked &&
+    css`
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        transition: 1s;
+        
+      form {
+          display: flex;
+      }
+      ul {
+          display: block;
+      }
+    `}
 `
 function Todo() {
 
     const [todos, setTodos] = useState([]);
     const [input, setInput] = useState('');
+    const [modalState, setModalState] = useState(false)
+
+    const manageState = () => {
+        setModalState(!modalState)
+        console.log(modalState);
+    }
 
     useEffect(() =>{
         db.collection('todos').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
@@ -108,8 +131,8 @@ function Todo() {
     }
 
     return (
-        <TodoForm>
-            <span><FontAwesomeIcon icon={faShoppingCart} /></span>
+        <TodoForm isClicked={modalState}>
+            <span onClick={ () => manageState() }><FontAwesomeIcon icon={faShoppingCart} /></span>
             <ul>
                 {todos.map(todo => (
                     <div><li>{todo.todo}</li><button onClick={event => db.collection('todos').doc(todo.id).delete()}><FontAwesomeIcon icon={faTimes} /></button></div>
